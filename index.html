@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kathy — Private Collection</title>
 
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -14,27 +15,37 @@
       --text:#e6e6eb;
       --muted:#a0a0b2;
       --accent:#c8a45d;
+      --cta:#6a00ff;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
       background:radial-gradient(1200px 600px at 50% -200px,#151525 0%,var(--bg) 45%);
       color:var(--text);
-      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      font-family:Inter,system-ui,Arial,sans-serif;
     }
-    .wrap{max-width:980px;margin:0 auto;padding:48px 20px}
-    h1,h2{font-family:"Playfair Display",serif}
-    h1{font-size:42px;margin:0 0 12px}
-    h2{font-size:28px;margin:0 0 10px}
+
+    .wrap{max-width:980px;margin:0 auto;padding:32px 16px}
+
+    h1,h2{
+      font-family:"Playfair Display",serif;
+      letter-spacing:.3px;
+    }
+
+    h1{font-size:38px;margin:0 0 12px}
+    h2{font-size:26px;margin:0 0 10px}
     p{color:var(--muted);line-height:1.7}
 
+    /* HERO */
     .hero{
-      padding:56px 32px;
-      border-radius:24px;
-      background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.01));
-      box-shadow:0 30px 80px rgba(0,0,0,.55);
+      padding:36px 24px;
+      border-radius:22px;
+      background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.01));
+      box-shadow:0 30px 80px rgba(0,0,0,.6);
       border:1px solid rgba(255,255,255,.06);
     }
+
     .badge{
       display:inline-block;
       padding:6px 12px;
@@ -44,46 +55,109 @@
       margin-bottom:12px;
     }
 
+    /* SLIDER */
+    .slider-container{
+      margin:28px auto 0;
+      position:relative;
+      overflow:hidden;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.08);
+      box-shadow:0 25px 70px rgba(0,0,0,.7);
+    }
+
+    .slides{
+      display:flex;
+      transition:transform .6s ease;
+    }
+
+    .slides img{
+      width:100%;
+      aspect-ratio:4/5;
+      object-fit:cover;
+      filter: blur(8px);
+    }
+
+    .slider-container::after{
+      content:"Preview blurred for privacy";
+      position:absolute;
+      bottom:12px;
+      right:12px;
+      font-size:12px;
+      background:rgba(0,0,0,.6);
+      padding:6px 10px;
+      border-radius:999px;
+      color:#fff;
+    }
+
+    .nav{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      width:40px;
+      height:40px;
+      border-radius:50%;
+      border:none;
+      background:rgba(0,0,0,.5);
+      color:#fff;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    .prev{left:10px}
+    .next{right:10px}
+
+    /* SECTIONS */
     .section{
-      margin-top:48px;
-      padding:36px 32px;
-      border-radius:24px;
+      margin-top:40px;
+      padding:30px 24px;
+      border-radius:22px;
       background:var(--panel);
       border:1px solid rgba(255,255,255,.06);
-      box-shadow:0 20px 60px rgba(0,0,0,.45);
+      box-shadow:0 20px 60px rgba(0,0,0,.5);
     }
 
     .counter{
       font-family:"Playfair Display",serif;
-      font-size:34px;
+      font-size:32px;
       color:var(--accent);
     }
 
-    .pay-box{
-      margin-top:24px;
+    /* CHECKOUT IMAGE */
+    .checkout-box{
+      margin-top:20px;
       text-align:center;
     }
-    .pay-box img{
-      max-width:420px;
+
+    .checkout-box a img{
       width:100%;
-      border-radius:20px;
-      box-shadow:0 25px 70px rgba(0,0,0,.7);
-      transition:transform .2s ease, box-shadow .2s ease;
-      cursor:pointer;
+      max-width:420px;
+      border-radius:18px;
+      box-shadow:0 20px 50px rgba(0,0,0,.7);
+      transition:transform .2s ease;
     }
-    .pay-box img:hover{
-      transform:scale(1.02);
-      box-shadow:0 35px 90px rgba(0,0,0,.9);
+
+    .checkout-box a img:hover{
+      transform:scale(1.03);
     }
 
     footer{
-      margin-top:80px;
-      padding:40px 20px;
+      margin-top:70px;
+      padding:40px 16px;
       text-align:center;
-      border-top:1px solid rgba(255,255,255,.08)
+      border-top:1px solid rgba(255,255,255,.08);
     }
-    footer a{color:#00C26F;text-decoration:none}
+
+    footer a{
+      color:var(--cta);
+      text-decoration:none;
+      font-weight:500;
+    }
+
     small{color:#8a8aa0}
+
+    @media(max-width:600px){
+      h1{font-size:30px}
+    }
   </style>
 </head>
 <body>
@@ -95,51 +169,70 @@
     <span class="badge">Limited Private Release</span>
     <h1>Hello — this is Kathy</h1>
     <p>
-      A carefully curated private collection.<br>
-      Available for a short time only.
+      A discreet private collection.<br>
+      Available for a limited time only.
     </p>
+
+    <!-- SLIDER -->
+    <div class="slider-container">
+      <div class="slides" id="slides">
+        <img src="img1.jpg" alt="">
+        <img src="img2.jpg" alt="">
+        <img src="img3.jpg" alt="">
+        <img src="img4.jpg" alt="">
+        <img src="img5.jpg" alt="">
+      </div>
+      <button class="nav prev" onclick="move(-1)">‹</button>
+      <button class="nav next" onclick="move(1)">›</button>
+    </div>
   </section>
 
   <!-- INFO -->
   <section class="section">
-    <h2>What’s inside</h2>
+    <h2>What you receive</h2>
     <p>
-      A ZIP archive containing <strong>10 exclusive videos (18+)</strong>.<br>
-      Discreet, private, and delivered only after successful payment.
+      A private ZIP archive containing <strong>10 exclusive 18+ videos</strong>.<br>
+      Secure delivery. No public access. No reselling.
     </p>
 
-    <p style="margin-top:20px">Availability</p>
-    <div class="counter">13,846</div>
-    <small>units remaining</small>
+    <p>
+      <strong>After successful payment, the download link is sent directly to your email address.</strong>
+    </p>
 
-    <p style="margin-top:20px">Price</p>
-    <div class="counter">$50</div>
-    <small>crypto payment</small>
+    <div style="display:flex;gap:24px;flex-wrap:wrap">
+      <div>
+        <div class="counter">$50</div>
+        <small>One-time payment</small>
+      </div>
+      <div>
+        <div class="counter">13,846</div>
+        <small>Accesses remaining</small>
+      </div>
+    </div>
   </section>
 
   <!-- CHECKOUT -->
   <section class="section">
     <h2>Secure Checkout</h2>
     <p>
-      Pay safely and securely using trusted crypto payment providers.<br>
-      Your transaction is encrypted and processed with full privacy.
+      Payments are processed securely via hel.io.<br>
+      Crypto and card payments supported. No data stored.
     </p>
 
-    <p style="margin-top:14px; color:#c8a45d; font-weight:500;">
-      Note: After payment, the download link will be sent to your email address.
-    </p>
-
-    <div class="pay-box">
-      <a href="https://moonpay.hel.io/pay/697fa65cd9e147c016548da7" target="_blank">
-        <img src="pay.jpg" alt="Pay securely with crypto">
+    <div class="checkout-box">
+      <a href="https://hel.io/pay/697fa65cd9e147c016548da7" target="_blank">
+        <img src="checkout.jpg" alt="Pay securely with hel.io">
       </a>
+      <p style="margin-top:14px;font-size:14px">
+        Click the image to proceed to secure payment.
+      </p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <strong>Customer Support</strong><br><br>
-    For questions regarding this digital product, please contact:<br>
+    For questions regarding this digital product:<br>
     <a href="mailto:kathy.on.my.world@gmail.com">kathy.on.my.world@gmail.com</a>
     <br><br>
     <small>
@@ -149,6 +242,24 @@
   </footer>
 
 </div>
+
+<!-- SLIDER SCRIPT -->
+<script>
+  const slides = document.getElementById("slides");
+  const total = slides.children.length;
+  let index = 0;
+
+  function show(){
+    slides.style.transform = `translateX(${-index * 100}%)`;
+  }
+
+  function move(step){
+    index = (index + step + total) % total;
+    show();
+  }
+
+  setInterval(()=>move(1),5000);
+</script>
 
 </body>
 </html>
