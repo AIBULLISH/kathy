@@ -74,7 +74,14 @@
       width:100%;
       aspect-ratio:4/5;
       object-fit:cover;
-      filter: blur(8px);
+      filter: blur(6px);
+      transition:filter .3s ease;
+    }
+
+    /* Hover or tap removes blur */
+    .slides img:hover,
+    .slides img:active{
+      filter: blur(0);
     }
 
     .slider-container::after{
