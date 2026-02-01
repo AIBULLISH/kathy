@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kathy — Private Collection</title>
 
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
@@ -15,7 +14,6 @@
       --text:#e6e6eb;
       --muted:#a0a0b2;
       --accent:#c8a45d;
-      --cta:#00C26F;
     }
     *{box-sizing:border-box}
     body{
@@ -25,7 +23,7 @@
       font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
     }
     .wrap{max-width:980px;margin:0 auto;padding:48px 20px}
-    h1,h2{font-family:"Playfair Display",serif;letter-spacing:.3px}
+    h1,h2{font-family:"Playfair Display",serif}
     h1{font-size:42px;margin:0 0 12px}
     h2{font-size:28px;margin:0 0 10px}
     p{color:var(--muted);line-height:1.7}
@@ -42,37 +40,9 @@
       padding:6px 12px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
-      color:#d8d8e6;
       font-size:12px;
       margin-bottom:12px;
     }
-
-    /* Slider */
-    .slider-container{
-      max-width:760px;
-      margin:36px auto 10px;
-      position:relative;
-      overflow:hidden;
-      border-radius:22px;
-      box-shadow:0 25px 70px rgba(0,0,0,.65);
-      border:1px solid rgba(255,255,255,.06);
-      background:#000;
-    }
-    .slides{display:flex;transition:transform .6s ease}
-    .slides img{
-      width:100%;
-      flex-shrink:0;
-      object-fit:cover;
-      aspect-ratio:4/5;
-    }
-    .nav{
-      position:absolute;top:50%;transform:translateY(-50%);
-      background:rgba(0,0,0,.45);
-      color:#fff;border:none;border-radius:50%;
-      width:42px;height:42px;cursor:pointer
-    }
-    .nav:hover{background:rgba(0,0,0,.65)}
-    .prev{left:12px}.next{right:12px}
 
     .section{
       margin-top:48px;
@@ -83,122 +53,102 @@
       box-shadow:0 20px 60px rgba(0,0,0,.45);
     }
 
-    .limit{
-      display:flex;gap:18px;flex-wrap:wrap;align-items:center
-    }
     .counter{
       font-family:"Playfair Display",serif;
-      font-size:34px;color:var(--accent)
+      font-size:34px;
+      color:var(--accent);
     }
 
-    .widget-box{
+    .pay-box{
       margin-top:24px;
-      padding:22px;
-      border-radius:18px;
-      background:#0f0f16;
-      border:1px solid rgba(255,255,255,.08);
       text-align:center;
-      color:var(--muted);
+    }
+    .pay-box img{
+      max-width:420px;
+      width:100%;
+      border-radius:20px;
+      box-shadow:0 25px 70px rgba(0,0,0,.7);
+      transition:transform .2s ease, box-shadow .2s ease;
+      cursor:pointer;
+    }
+    .pay-box img:hover{
+      transform:scale(1.02);
+      box-shadow:0 35px 90px rgba(0,0,0,.9);
     }
 
     footer{
-      margin-top:80px;padding:40px 20px;text-align:center;
+      margin-top:80px;
+      padding:40px 20px;
+      text-align:center;
       border-top:1px solid rgba(255,255,255,.08)
     }
-    footer a{color:var(--cta);text-decoration:none;font-weight:500}
+    footer a{color:#00C26F;text-decoration:none}
     small{color:#8a8aa0}
-
-    @media (max-width:600px){
-      h1{font-size:32px}
-      .wrap{padding:28px 14px}
-    }
   </style>
 </head>
 <body>
 
-  <div class="wrap">
+<div class="wrap">
 
-    <!-- HERO -->
-    <section class="hero">
-      <span class="badge">Limited Private Release</span>
-      <h1>Hello — this is Kathy</h1>
-      <p>
-        A carefully curated private collection.<br>
-        Available for a short time only.
-      </p>
+  <!-- HERO -->
+  <section class="hero">
+    <span class="badge">Limited Private Release</span>
+    <h1>Hello — this is Kathy</h1>
+    <p>
+      A carefully curated private collection.<br>
+      Available for a short time only.
+    </p>
+  </section>
 
-      <!-- SLIDER -->
-      <div class="slider-container">
-        <div class="slides" id="slides">
-          <img src="img1.jpg" alt="">
-          <img src="img2.jpg" alt="">
-          <img src="img3.jpg" alt="">
-          <img src="img4.jpg" alt="">
-          <img src="img5.jpg" alt="">
-        </div>
-        <button class="nav prev" onclick="move(-1)">&#10094;</button>
-        <button class="nav next" onclick="move(1)">&#10095;</button>
-      </div>
-    </section>
+  <!-- INFO -->
+  <section class="section">
+    <h2>What’s inside</h2>
+    <p>
+      A ZIP archive containing <strong>10 exclusive videos (18+)</strong>.<br>
+      Discreet, private, and delivered only after successful payment.
+    </p>
 
-    <!-- DESCRIPTION -->
-    <section class="section">
-      <h2>What’s inside</h2>
-      <p>
-        A ZIP archive containing <strong>10 exclusive videos (18+)</strong>.<br>
-        Discreet, private, and delivered only after successful payment.
-      </p>
+    <p style="margin-top:20px">Availability</p>
+    <div class="counter">13,846</div>
+    <small>units remaining</small>
 
-      <div class="limit">
-        <div>
-          <p style="margin:0">Availability</p>
-          <div class="counter">13,846</div>
-          <small>units remaining</small>
-        </div>
-        <div>
-          <p style="margin:0">Price</p>
-          <div class="counter">$50</div>
-          <small>crypto payment</small>
-        </div>
-      </div>
-    </section>
+    <p style="margin-top:20px">Price</p>
+    <div class="counter">$50</div>
+    <small>crypto payment</small>
+  </section>
 
-    <!-- PAYMENT (Widget entfernt) -->
-    <section class="section">
-      <h2>Secure Checkout</h2>
-      <p>
-        Pay securely using crypto.<br>
-        The checkout button will be added here.
-      </p>
+  <!-- CHECKOUT -->
+  <section class="section">
+    <h2>Secure Checkout</h2>
+    <p>
+      Pay safely and securely using trusted crypto payment providers.<br>
+      Your transaction is encrypted and processed with full privacy.
+    </p>
 
-      <div class="widget-box">
-        Checkout coming here
-      </div>
-    </section>
+    <p style="margin-top:14px; color:#c8a45d; font-weight:500;">
+      Note: After payment, the download link will be sent to your email address.
+    </p>
 
-    <!-- FOOTER -->
-    <footer>
-      <strong>Kundensupport</strong><br><br>
-      For questions regarding this digital product, please contact:<br>
-      <a href="mailto:kathy.on.my.world@gmail.com">kathy.on.my.world@gmail.com</a>
-      <br><br>
-      <small>
-        This website is operated independently.<br>
-        No public business address is provided.
-      </small>
-    </footer>
+    <div class="pay-box">
+      <a href="https://moonpay.hel.io/pay/697fa65cd9e147c016548da7" target="_blank">
+        <img src="pay.jpg" alt="Pay securely with crypto">
+      </a>
+    </div>
+  </section>
 
-  </div>
+  <!-- FOOTER -->
+  <footer>
+    <strong>Customer Support</strong><br><br>
+    For questions regarding this digital product, please contact:<br>
+    <a href="mailto:kathy.on.my.world@gmail.com">kathy.on.my.world@gmail.com</a>
+    <br><br>
+    <small>
+      This website is operated independently.<br>
+      No public business address is provided.
+    </small>
+  </footer>
 
-  <!-- SLIDER SCRIPT -->
-  <script>
-    const slides = document.getElementById('slides');
-    const total = slides.children.length;
-    let index = 0;
-    function show(){ slides.style.transform = `translateX(${-index*100}%)`; }
-    function move(step){ index = (index + step + total) % total; show(); }
-    setInterval(()=>move(1),5000);
-  </script>
+</div>
 
 </body>
 </html>
